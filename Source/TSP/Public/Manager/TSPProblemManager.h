@@ -18,8 +18,19 @@ public:
 
 	virtual void Tick(float DeltaTime) override;
 
+	UFUNCTION(BlueprintImplementableEvent, Category="Helper")
+	TArray<int> Shuffle(const TArray<int>& OriginalArray);
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Helper")
+	void DrawSolution();
+
+	float CalculateDistance(const TArray<int>& Array);
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="SetUp")
 	int NumberOfCities;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SetUp")
+	int NumberOfPopulations;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SetUp")
 	float MaxRandomX;
@@ -32,6 +43,19 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "SetUp")
 	TArray<ATSPCity*> Cities;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "TSP")
+	float RecordDistance = -1.0f;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "TSP")
+	TArray<int> BestCitiesOrder;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "TSP")
+	TArray<int> DefaultOrder;
+
+	TArray<TArray<int>> Populations;
+
+	TArray<float> Fitness;
 
 protected:
 	virtual void BeginPlay() override;
