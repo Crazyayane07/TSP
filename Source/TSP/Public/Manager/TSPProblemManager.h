@@ -26,6 +26,16 @@ public:
 
 	float CalculateDistance(const TArray<int>& Array);
 
+	void CalculateDFitness();
+
+	void NormalizeFitness();
+
+	void CalculateNextGeneration();
+
+	TArray<int> PickOne();
+
+	void Mutate(TArray<int>& Array);
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="SetUp")
 	int NumberOfCities;
 
