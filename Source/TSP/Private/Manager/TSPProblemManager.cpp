@@ -91,7 +91,11 @@ void ATSPProblemManager::CalculateNextGeneration()
 
 	for (int i = 0; i < Populations.Num(); i++) 
 	{
-		TArray<int> Population = PickOne();
+		TArray<int> PopulationA = PickOne();
+		TArray<int> PopulationB = PickOne();
+
+		TArray<int> Population = Crossover(PopulationA, PopulationB);
+
 		Mutate(Population);
 		NewPopulations.Add(Population);
 	}
@@ -122,6 +126,30 @@ TArray<int> ATSPProblemManager::PickOne()
 	}
 
 	return Populations[id];
+}
+
+TArray<int> ATSPProblemManager::Crossover(const TArray<int>& PopulationA, const TArray<int>& PopulationB)
+{
+	int startOrder = FMath::FRandRange(0.0f, PopulationA.Num() - 1);
+	int endOrder = FMath::FRandRange(startOrder, PopulationA.Num() - 1);
+
+	TArray<int> NewPopulation;
+
+	for (int i = startOrder; i <= endOrder; i++)
+	{
+		NewPopulation.Add(PopulationA[i]);
+	}
+
+	for (int i = 0; i < PopulationB.Num(); i++) 
+	{
+		int City = PopulationB[i];
+		if (!NewPopulation.Contains(City)) 
+		{
+			NewPopulation.Add(City);
+		}
+	}
+
+	return NewPopulation;
 }
 
 void ATSPProblemManager::Mutate(TArray<int>& Array)

@@ -37,6 +37,8 @@ public:
 
 	TArray<int> PickOne();
 
+	TArray<int> Crossover(const TArray<int>& PopulationA, const TArray<int>& PopulationB);
+
 	void Mutate(TArray<int>& Array);
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="SetUp")
