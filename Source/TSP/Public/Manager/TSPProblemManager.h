@@ -22,11 +22,14 @@ public:
 	TArray<int> Shuffle(const TArray<int>& OriginalArray);
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Helper")
+	void ShowNewBest(const TArray<int>& BestCities, const float BestDist);
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Helper")
 	void DrawSolution();
 
 	float CalculateDistance(const TArray<int>& Array);
 
-	void CalculateDFitness();
+	void CalculateFitness();
 
 	void NormalizeFitness();
 

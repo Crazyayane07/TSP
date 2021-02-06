@@ -31,7 +31,7 @@ void ATSPProblemManager::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	CalculateDFitness();
+	CalculateFitness();
 	NormalizeFitness();
 	CalculateNextGeneration();
 	DrawSolution();
@@ -55,7 +55,7 @@ float ATSPProblemManager::CalculateDistance(const TArray<int>& Array)
 	return sum;
 }
 
-void ATSPProblemManager::CalculateDFitness()
+void ATSPProblemManager::CalculateFitness()
 {
 	for (int i = 0; i < Populations.Num(); i++)
 	{
@@ -66,6 +66,7 @@ void ATSPProblemManager::CalculateDFitness()
 		{
 			RecordDistance = Distance;
 			BestCitiesOrder = Populations[i];
+			ShowNewBest(BestCitiesOrder, RecordDistance);
 		}
 	}
 }
