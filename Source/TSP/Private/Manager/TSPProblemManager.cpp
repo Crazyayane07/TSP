@@ -91,8 +91,8 @@ void ATSPProblemManager::CalculateNextGeneration()
 
 	for (int i = 0; i < Populations.Num(); i++) 
 	{
-		TArray<int> PopulationA = PickOne();
-		TArray<int> PopulationB = PickOne();
+		TArray<int> PopulationA = GetPopulation();
+		TArray<int> PopulationB = GetPopulation();
 
 		TArray<int> Population = Crossover(PopulationA, PopulationB);
 
@@ -104,7 +104,7 @@ void ATSPProblemManager::CalculateNextGeneration()
 	Populations.Append(NewPopulations);
 }
 
-TArray<int> ATSPProblemManager::PickOne()
+TArray<int> ATSPProblemManager::GetPopulation()
 {
 	int id = 0;
 	float r = FMath::FRandRange(0.0f, 1.0f);

@@ -35,7 +35,7 @@ public:
 
 	void CalculateNextGeneration();
 
-	TArray<int> PickOne();
+	TArray<int> GetPopulation();
 
 	TArray<int> Crossover(const TArray<int>& PopulationA, const TArray<int>& PopulationB);
 
